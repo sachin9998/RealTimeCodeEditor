@@ -1,5 +1,6 @@
 import Editor from "@monaco-editor/react";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import io from "socket.io-client";
 import "./App.css";
 
@@ -21,7 +22,10 @@ const App = () => {
     }
   };
 
-  const copyRoomId = () => {};
+  const copyRoomId = () => {
+    navigator.clipboard.writeText(roomId);
+    toast.success("Room ID Copied!");
+  };
 
   const handleCodeChange = (newCode) => {
     setCode(newCode);
